@@ -1,10 +1,9 @@
-const express = require('express')
-const app = express()
-const port = 8000
+const app = require('express')()
+const PORT = process.env.PORT || 8000
+const routes = require('./routes')
 
 app.set('view engine', 'ejs')
 
-app.get('/', (req, res) => res.render("index"))
-app.get('/another', (req, res) => res.render("another"))
+app.use('/', routes)
 
-app.listen(port, () => console.log(`App running on port ${port}`))
+app.listen(PORT, () => console.log(`App running on port ${PORT}`))
